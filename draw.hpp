@@ -21,14 +21,14 @@ private:
     // Drawable things
     sf::Text textTitle;
     sf::Text textRadius;
-    sf::RectangleShape canvasRect;
+    //sf::RectangleShape canvasRect;
 
     // Private functions
     void initVariables();
     void initWindow();
     void initTextTitle();
     void initTextRadius();
-    void initCanvasRect();
+    //void initCanvasRect();
 
 public:
     // Public variables

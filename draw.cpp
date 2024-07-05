@@ -44,7 +44,7 @@ void Draw::initTextRadius()
     std::string str = "Radius: " + std::to_string(radius);
     this->textRadius.setString(str);
 }
-
+/*
 void Draw::initCanvasRect()
 {
     // Style
@@ -65,7 +65,7 @@ void Draw::initCanvasRect()
     this->canvasRect.setSize(size);
     this->canvasRect.setPosition(pos);
 }
-
+*/
 // Constructor / Destructor
 Draw::Draw()
 {
@@ -73,7 +73,7 @@ Draw::Draw()
     this->initWindow();
     this->initTextTitle();
     this->initTextRadius();
-    this->initCanvasRect();
+    //this->initCanvasRect();
 }
 
 Draw::~Draw()
@@ -133,7 +133,7 @@ void Draw::render()
 
     this->window->draw(textTitle);
     this->window->draw(textRadius);
-    this->window->draw(canvasRect);
+    //this->window->draw(canvasRect);
 
     this->window->display();
 }
