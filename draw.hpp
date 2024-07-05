@@ -16,23 +16,23 @@ private:
     sf::VideoMode videoMode;
     sf::RenderWindow* window;
     sf::Event event;
-    sf::Font fontAntonio;
+    //sf::Font fontAntonio;
 
     // Drawable things
-    sf::Text textTitle;
-    sf::Text textRadius;
-    sf::RectangleShape canvasRect;
+    //sf::Text textTitle;
+    //sf::Text textRadius;
+    //sf::RectangleShape canvasRect;
 
     // Private functions
     void initVariables();
     void initWindow();
-    void initTextTitle();
-    void initTextRadius();
-    void initCanvasRect();
+    //void initTextTitle();
+    //void initTextRadius();
+    //void initCanvasRect();
 
 public:
     // Public variables
-    int radius;
+    //int radius;
 
     // Constructor / Destructor
     Draw();
@@ -44,7 +44,7 @@ public:
     // Funciones
 
     void keyEvent(sf::Event event);
-    void updateRadius();
+    //void updateRadius();
 
     void events();
     void update();

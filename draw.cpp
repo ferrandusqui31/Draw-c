@@ -4,9 +4,9 @@ void Draw::initVariables()
 {
     this->videoMode = toGetWindowSize.getDesktopMode();
     this->window = nullptr;
-    this->fontAntonio.loadFromFile("Antonio.ttf");
+    //this->fontAntonio.loadFromFile("Antonio.ttf");
 
-    this->radius = 20;
+    //this->radius = 20;
 }
 
 // Funciones privadas
@@ -15,7 +15,7 @@ void Draw::initWindow()
     this->window = new sf::RenderWindow(videoMode, "Draw");
     this->window->setFramerateLimit(30);
 }
-
+/*
 void Draw::initTextTitle()
 {
     // Style
@@ -31,8 +31,8 @@ void Draw::initTextTitle()
     pos.x -= 64.5;     // Half of text's width
     pos.y = 10;
     this->textTitle.setPosition(pos);
-}
-
+}*/
+/*
 void Draw::initTextRadius()
 {
     // Style
@@ -44,7 +44,7 @@ void Draw::initTextRadius()
     std::string str = "Radius: " + std::to_string(radius);
     this->textRadius.setString(str);
 }
-
+*//*
 void Draw::initCanvasRect()
 {
     // Style
@@ -65,15 +65,15 @@ void Draw::initCanvasRect()
     this->canvasRect.setSize(size);
     this->canvasRect.setPosition(pos);
 }
-
+*/
 // Constructor / Destructor
 Draw::Draw()
 {
     this->initVariables();
     this->initWindow();
-    this->initTextTitle();
-    this->initTextRadius();
-    this->initCanvasRect();
+    //this->initTextTitle();
+    //this->initTextRadius();
+    //this->initCanvasRect();
 }
 
 Draw::~Draw()
@@ -96,13 +96,13 @@ void Draw::keyEvent(sf::Event event)
             break;
     }
 }
-
+/*
 void Draw::updateRadius()
 {
     std::string str = "Radius: " + std::to_string(radius);
     this->textRadius.setString(str);
 }
-
+*/
 // Funciones publicas
 void Draw::events()
 {
@@ -124,16 +124,16 @@ void Draw::events()
 void Draw::update()
 {
     this->events();
-    this->updateRadius();
+    //this->updateRadius();
 }
 
 void Draw::render()
 {
     this->window->clear(sf::Color::White);
 
-    this->window->draw(textTitle);
-    this->window->draw(textRadius);
-    this->window->draw(canvasRect);
+    //this->window->draw(textTitle);
+    //this->window->draw(textRadius);
+    //this->window->draw(canvasRect);
 
     this->window->display();
 }
