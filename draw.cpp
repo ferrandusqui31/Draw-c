@@ -64,7 +64,6 @@ void Draw::initCanvasRect()
 
     this->canvasRect.setSize(size);
     this->canvasRect.setPosition(pos);
-    
 }
 
 // Constructor / Destructor
