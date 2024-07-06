@@ -1,4 +1,4 @@
-#include "draw.hpp"
+#include "Draw.hpp"
 
 void Draw::initVariables()
 {
