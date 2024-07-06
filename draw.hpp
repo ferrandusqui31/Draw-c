@@ -17,22 +17,26 @@ private:
     sf::RenderWindow* window;
     sf::Event event;
     sf::Font fontAntonio;
+    sf::Cursor cursorCross;
+
+    int radius;
 
     // Drawable things
     sf::Text textTitle;
     sf::Text textRadius;
     sf::RectangleShape canvasRect;
+    sf::CircleShape preview;
 
     // Private functions
     void initVariables();
     void initWindow();
+    void reInitWindow();
     void initTextTitle();
     void initTextRadius();
     void initCanvasRect();
+    void initPreviewCircle();
 
 public:
-    // Public variables
-    int radius;
 
     // Constructor / Destructor
     Draw();
@@ -42,9 +46,10 @@ public:
     const bool running() const;     //(no entiendo nada pero va)
 
     // Funciones
-
+    void checkWindowSize();
     void keyEvent(sf::Event event);
     void updateRadius();
+    void updatePreviewCircle();
 
     void events();
     void update();

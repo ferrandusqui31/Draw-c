@@ -5,6 +5,7 @@ void Draw::initVariables()
     this->videoMode = toGetWindowSize.getDesktopMode();
     this->window = nullptr;
     this->fontAntonio.loadFromFile("Antonio.ttf");
+    this->cursorCross.loadFromSystem(sf::Cursor::Cross);
 
     this->radius = 20;
 }
@@ -12,8 +13,18 @@ void Draw::initVariables()
 // Funciones privadas
 void Draw::initWindow()
 {
-    this->window = new sf::RenderWindow(videoMode, "Draw");
+    this->window = new sf::RenderWindow(this->videoMode, "Draw");
     this->window->setFramerateLimit(30);
+    this->window->setMouseCursor(this->cursorCross);
+}
+
+void Draw::reInitWindow()
+{
+    this->window->close();
+    this->window->create(this->videoMode, "Draw");
+
+    this->window->setFramerateLimit(30);
+    this->window->setMouseCursor(this->cursorCross);
 }
 
 void Draw::initTextTitle()
@@ -66,6 +77,13 @@ void Draw::initCanvasRect()
     this->canvasRect.setPosition(pos);
 }
 
+void Draw::initPreviewCircle()
+{
+    this->preview.setFillColor(sf::Color::Black);
+    this->preview.setRadius(this->radius);
+    this->preview.setOrigin(this->radius, this->radius);
+}
+
 // Constructor / Destructor
 Draw::Draw()
 {
@@ -74,6 +92,7 @@ Draw::Draw()
     this->initTextTitle();
     this->initTextRadius();
     this->initCanvasRect();
+    this->initPreviewCircle();
 }
 
 Draw::~Draw()
@@ -85,6 +104,17 @@ Draw::~Draw()
 const bool Draw::running() const
 {
     return this->window->isOpen();
+}
+
+void Draw::checkWindowSize()
+{
+    sf::Vector2u windowSize = window->getSize();
+    if(windowSize.x != videoMode.width or windowSize.y != videoMode.height)
+    {
+        videoMode.width = windowSize.x;
+        videoMode.height = windowSize.y;
+        reInitWindow();
+    }
 }
 
 void Draw::keyEvent(sf::Event event)
@@ -99,8 +129,18 @@ void Draw::keyEvent(sf::Event event)
 
 void Draw::updateRadius()
 {
-    std::string str = "Radius: " + std::to_string(radius);
+    std::string str = "Radius: " + std::to_string(this->radius);
     this->textRadius.setString(str);
+}
+
+void Draw::updatePreviewCircle()
+{
+    sf::Vector2i mousePos = sf::Mouse::getPosition(*this->window);
+    if(this->canvasRect.getGlobalBounds().contains(mousePos.x, mousePos.y))
+    {
+        this->preview.setPosition(mousePos.x, mousePos.y);
+    }
+    this->preview.setOrigin(sf::Vector2f(this->radius, this->radius));
 }
 
 // Funciones publicas
@@ -123,14 +163,17 @@ void Draw::events()
 
 void Draw::update()
 {
+    this->checkWindowSize();
     this->events();
     this->updateRadius();
+    this->updatePreviewCircle();
 }
 
 void Draw::render()
 {
     this->window->clear(sf::Color::White);
 
+    this->window->draw(preview);
     this->window->draw(textTitle);
     this->window->draw(textRadius);
     this->window->draw(canvasRect);
