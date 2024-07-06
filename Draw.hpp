@@ -23,6 +23,18 @@ private:
 
     // Color rectangles
     ColorRect* colorRectangleRed;
+    ColorRect* colorRectangleOrange;
+    ColorRect* colorRectangleYellow;
+    ColorRect* colorRectangleGreen;
+    ColorRect* colorRectangleCyan;
+    ColorRect* colorRectangleBlue;
+    ColorRect* colorRectanglePurple;
+    ColorRect* colorRectangleMagenta;
+    ColorRect* colorRectangleWhite;
+    ColorRect* colorRectangleLightGray;
+    ColorRect* colorRectangleDarkGray;
+    ColorRect* colorRectangleBlack;
+    ColorRect* colorPreview;
 
     // Circles
     int radius;
@@ -68,6 +80,7 @@ public:
 
     // Render functions
     void renderCircles();
+    void renderColorRectangles();
 
     void events();
     void update();

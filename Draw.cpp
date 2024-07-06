@@ -86,8 +86,29 @@ void Draw::initPreviewCircle()
 
 void Draw::initColorRectangles()
 {
-    this->colorRectangleRed = nullptr;
-    this->colorRectangleRed = new ColorRect(sf::Color(255,0,0), sf::Vector2f(200, 200), sf::Vector2f(75, 75));
+    sf::Vector2f initSize(70,70);
+    sf::Vector2f initPos;
+
+    initPos.x = this->videoMode.width / 2;
+    initPos.x -= 360;
+
+    initPos.y = 85;
+    initPos.y += this->canvasRect.getSize().y;
+    initPos.y += 20;
+
+    this->colorRectangleRed = new ColorRect(sf::Color(255,0,0), initPos, initSize);
+    this->colorRectangleOrange = new ColorRect(sf::Color(255, 162, 0), sf::Vector2f(initPos.x+80, initPos.y), initSize);
+    this->colorRectangleYellow = new ColorRect(sf::Color(255, 255, 0), sf::Vector2f(initPos.x+160, initPos.y), initSize);
+    this->colorRectangleGreen = new ColorRect(sf::Color(0, 255, 0), sf::Vector2f(initPos.x+240, initPos.y), initSize);
+    this->colorRectangleCyan = new ColorRect(sf::Color(0, 255, 255), sf::Vector2f(initPos.x+320, initPos.y), initSize);
+    this->colorRectangleBlue = new ColorRect(sf::Color(0, 0, 255), sf::Vector2f(initPos.x+400, initPos.y), initSize);
+    this->colorRectanglePurple = new ColorRect(sf::Color(150, 0, 255), sf::Vector2f(initPos.x+480, initPos.y), initSize);
+    this->colorRectangleMagenta = new ColorRect(sf::Color(255, 0, 255), sf::Vector2f(initPos.x+560, initPos.y), initSize);
+    this->colorRectangleWhite = new ColorRect(sf::Color(255, 255, 255), sf::Vector2f(initPos.x, initPos.y+80), sf::Vector2f(150, initSize.y));
+    this->colorRectangleLightGray = new ColorRect(sf::Color(170, 170, 170), sf::Vector2f(initPos.x+160, initPos.y+80), sf::Vector2f(150, initSize.y));
+    this->colorRectangleDarkGray = new ColorRect(sf::Color(85, 85, 85), sf::Vector2f(initPos.x+320, initPos.y+80), sf::Vector2f(150, initSize.y));
+    this->colorRectangleBlack = new ColorRect(sf::Color(0, 0, 0), sf::Vector2f(initPos.x+480, initPos.y+80), sf::Vector2f(150, initSize.y));
+    this->colorPreview = new ColorRect(sf::Color(0, 0, 0), sf::Vector2f(initPos.x+650, initPos.y), sf::Vector2f(initSize.x, 150));
 }
 
 // Constructor / Destructor
@@ -99,7 +120,6 @@ Draw::Draw()
     this->initTextRadius();
     this->initCanvasRect();
     this->initPreviewCircle();
-
     this->initColorRectangles();
 }
 
@@ -172,6 +192,23 @@ void Draw::renderCircles()
     }
 }
 
+void Draw::renderColorRectangles()
+{
+    this->window->draw(this->colorRectangleRed->rectangle);
+    this->window->draw(this->colorRectangleOrange->rectangle);
+    this->window->draw(this->colorRectangleYellow->rectangle);
+    this->window->draw(this->colorRectangleGreen->rectangle);
+    this->window->draw(this->colorRectangleCyan->rectangle);
+    this->window->draw(this->colorRectangleBlue->rectangle);
+    this->window->draw(this->colorRectanglePurple->rectangle);
+    this->window->draw(this->colorRectangleMagenta->rectangle);
+    this->window->draw(this->colorRectangleWhite->rectangle);
+    this->window->draw(this->colorRectangleLightGray->rectangle);
+    this->window->draw(this->colorRectangleDarkGray->rectangle);
+    this->window->draw(this->colorRectangleBlack->rectangle);
+    this->window->draw(this->colorPreview->rectangle);
+}
+
 // Funciones publicas
 void Draw::events()
 {
@@ -214,7 +251,7 @@ void Draw::render()
     this->window->draw(this->textTitle);
     this->window->draw(this->textRadius);
     this->window->draw(this->canvasRect);
-    this->window->draw(this->colorRectangleRed->rectangle);
+    this->renderColorRectangles();
 
     this->window->display();
 }
