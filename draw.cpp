@@ -117,6 +117,11 @@ void Draw::checkWindowSize()
     }
 }
 
+void Draw::pushCircle()
+{
+    this->circles.push_back(this->preview);
+}
+
 void Draw::keyEvent(sf::Event event)
 {
     switch(event.key.code)
@@ -143,6 +148,14 @@ void Draw::updatePreviewCircle()
     this->preview.setOrigin(sf::Vector2f(this->radius, this->radius));
 }
 
+void Draw::renderCircles()
+{
+    for(int i = 0; i < circles.size(); i++)
+    {
+        window->draw(circles[i]);
+    }
+}
+
 // Funciones publicas
 void Draw::events()
 {
@@ -156,6 +169,10 @@ void Draw::events()
             
             case sf::Event::KeyPressed:
                 this->keyEvent(this->event);
+                break;
+            case sf::Event::MouseButtonPressed:
+                if(this->event.mouseButton.button == sf::Mouse::Button::Left)
+                    this->pushCircle();
                 break;
         }
     }
@@ -173,6 +190,7 @@ void Draw::render()
 {
     this->window->clear(sf::Color::White);
 
+    this->renderCircles();
     this->window->draw(preview);
     this->window->draw(textTitle);
     this->window->draw(textRadius);

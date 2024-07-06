@@ -20,6 +20,7 @@ private:
     sf::Cursor cursorCross;
 
     int radius;
+    std::vector<sf::CircleShape> circles;
 
     // Drawable things
     sf::Text textTitle;
@@ -47,9 +48,17 @@ public:
 
     // Funciones
     void checkWindowSize();
+
+    // Event functions
+    void pushCircle();
     void keyEvent(sf::Event event);
+
+    // Update functions
     void updateRadius();
     void updatePreviewCircle();
+
+    // Render functions
+    void renderCircles();
 
     void events();
     void update();
