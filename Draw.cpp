@@ -84,6 +84,12 @@ void Draw::initPreviewCircle()
     this->preview.setOrigin(this->radius, this->radius);
 }
 
+void Draw::initColorRectangles()
+{
+    this->colorRectangleRed = nullptr;
+    this->colorRectangleRed = new ColorRect(sf::Color(255,0,0), sf::Vector2f(200, 200), sf::Vector2f(75, 75));
+}
+
 // Constructor / Destructor
 Draw::Draw()
 {
@@ -93,6 +99,8 @@ Draw::Draw()
     this->initTextRadius();
     this->initCanvasRect();
     this->initPreviewCircle();
+
+    this->initColorRectangles();
 }
 
 Draw::~Draw()
@@ -202,10 +210,11 @@ void Draw::render()
     this->window->clear(sf::Color::White);
 
     this->renderCircles();
-    this->window->draw(preview);
-    this->window->draw(textTitle);
-    this->window->draw(textRadius);
-    this->window->draw(canvasRect);
+    this->window->draw(this->preview);
+    this->window->draw(this->textTitle);
+    this->window->draw(this->textRadius);
+    this->window->draw(this->canvasRect);
+    this->window->draw(this->colorRectangleRed->rectangle);
 
     this->window->display();
 }

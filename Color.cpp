@@ -9,16 +9,11 @@ void ColorRect::initRectangle()
     this->rectangle.setOutlineThickness(2);
 }
 
-ColorRect::ColorRect(sf::Color colorSet, sf::Vector2f sizeSet, sf::Vector2f positionSet)
+ColorRect::ColorRect(sf::Color colorSet, sf::Vector2f positionSet, sf::Vector2f sizeSet)
 {
     this->color = colorSet;
-    this->size = sizeSet;
     this->position = positionSet;
+    this->size = sizeSet;
 
     this->initRectangle();
-}
-
-void ColorRect::render(sf::RenderWindow window)
-{
-    window.draw(rectangle);
 }

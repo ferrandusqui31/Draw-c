@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Color.hpp"
+
 #include <iostream>
 #include <string>
 
@@ -19,6 +21,10 @@ private:
     sf::Font fontAntonio;
     sf::Cursor cursorCross;
 
+    // Color rectangles
+    ColorRect* colorRectangleRed;
+
+    // Circles
     int radius;
     std::vector<sf::CircleShape> circles;
 
@@ -36,6 +42,8 @@ private:
     void initTextRadius();
     void initCanvasRect();
     void initPreviewCircle();
+
+    void initColorRectangles();
 
 public:
 

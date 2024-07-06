@@ -10,19 +10,17 @@
 
 class ColorRect{
 private:
-    sf::RectangleShape rectangle;
-
     void initRectangle();
 
 public:
     // Public variables
+    sf::RectangleShape rectangle;
     sf::Color color;
     sf::Vector2f size;
     sf::Vector2f position;
 
     // Constructor
-    ColorRect(sf::Color colorSet, sf::Vector2f sizeSet, sf::Vector2f positionSet);
+    ColorRect(sf::Color colorSet, sf::Vector2f positionSet, sf::Vector2f sizeSet);
 
     // Public functions
-    void render(sf::RenderWindow window);
 };
