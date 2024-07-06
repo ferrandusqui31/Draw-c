@@ -1,4 +1,5 @@
-#include "draw.hpp"
+#include "Color.hpp"
+#include "Draw.hpp"
 
 int main()
 {
