@@ -23,4 +23,6 @@ public:
     ColorRect(sf::Color colorSet, sf::Vector2f positionSet, sf::Vector2f sizeSet);
 
     // Public functions
+    bool checkIfClicked(sf::RenderWindow* window);
+    void updateColor(sf::Color newColor);
 };

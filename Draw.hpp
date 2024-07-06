@@ -36,7 +36,8 @@ private:
     ColorRect* colorRectangleBlack;
     ColorRect* colorPreview;
 
-    // Circles
+    // Functionalities (no se como llamarlo)
+    sf::Color color = sf::Color(0, 0, 0);
     int radius;
     std::vector<sf::CircleShape> circles;
 
@@ -73,6 +74,7 @@ public:
     void keyEvent(sf::Event event);
     void changeRadius(int delta);
     void pushCircle();
+    void checkIfColorRectangleClicked();
 
     // Update functions
     void updateRadius();

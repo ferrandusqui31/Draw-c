@@ -108,7 +108,7 @@ void Draw::initColorRectangles()
     this->colorRectangleLightGray = new ColorRect(sf::Color(170, 170, 170), sf::Vector2f(initPos.x+160, initPos.y+80), sf::Vector2f(150, initSize.y));
     this->colorRectangleDarkGray = new ColorRect(sf::Color(85, 85, 85), sf::Vector2f(initPos.x+320, initPos.y+80), sf::Vector2f(150, initSize.y));
     this->colorRectangleBlack = new ColorRect(sf::Color(0, 0, 0), sf::Vector2f(initPos.x+480, initPos.y+80), sf::Vector2f(150, initSize.y));
-    this->colorPreview = new ColorRect(sf::Color(0, 0, 0), sf::Vector2f(initPos.x+650, initPos.y), sf::Vector2f(initSize.x, 150));
+    this->colorPreview = new ColorRect(this->color, sf::Vector2f(initPos.x+650, initPos.y), sf::Vector2f(initSize.x, 150));
 }
 
 // Constructor / Destructor
@@ -166,7 +166,40 @@ void Draw::changeRadius(int delta)
 
 void Draw::pushCircle()
 {
-    this->circles.push_back(this->preview);
+    sf::Vector2i mousePos = sf::Mouse::getPosition(*this->window);
+    if(this->canvasRect.getGlobalBounds().contains(mousePos.x, mousePos.y))
+        this->circles.push_back(this->preview);
+}
+
+void Draw::checkIfColorRectangleClicked()
+{
+    if(this->colorRectangleRed->checkIfClicked(this->window))
+        this->color = colorRectangleRed->color;
+    if(this->colorRectangleOrange->checkIfClicked(this->window))
+        this->color = colorRectangleOrange->color;
+    if(this->colorRectangleYellow->checkIfClicked(this->window))
+        this->color = colorRectangleYellow->color;
+    if(this->colorRectangleGreen->checkIfClicked(this->window))
+        this->color = colorRectangleGreen->color;
+    if(this->colorRectangleCyan->checkIfClicked(this->window))
+        this->color = colorRectangleCyan->color;
+    if(this->colorRectangleBlue->checkIfClicked(this->window))
+        this->color = colorRectangleBlue->color;
+    if(this->colorRectanglePurple->checkIfClicked(this->window))
+        this->color = colorRectanglePurple->color;
+    if(this->colorRectangleMagenta->checkIfClicked(this->window))
+        this->color = colorRectangleMagenta->color;
+    if(this->colorRectangleWhite->checkIfClicked(this->window))
+        this->color = colorRectangleWhite->color;
+    if(this->colorRectangleLightGray->checkIfClicked(this->window))
+        this->color = colorRectangleLightGray->color;
+    if(this->colorRectangleDarkGray->checkIfClicked(this->window))
+        this->color = colorRectangleDarkGray->color;
+    if(this->colorRectangleBlack->checkIfClicked(this->window))
+        this->color = colorRectangleBlack->color;
+    
+    this->colorPreview->updateColor(this->color);
+    this->preview.setFillColor(this->color);
 }
 
 void Draw::updateRadius()
@@ -226,6 +259,7 @@ void Draw::events()
             case sf::Event::MouseButtonPressed:
                 if(this->event.mouseButton.button == sf::Mouse::Button::Left)
                     this->pushCircle();
+                    this->checkIfColorRectangleClicked();
                 break;
             case sf::Event::MouseWheelMoved:
                 this->changeRadius(this->event.mouseWheel.delta);

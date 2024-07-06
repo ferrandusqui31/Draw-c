@@ -17,3 +17,17 @@ ColorRect::ColorRect(sf::Color colorSet, sf::Vector2f positionSet, sf::Vector2f 
 
     this->initRectangle();
 }
+
+bool ColorRect::checkIfClicked(sf::RenderWindow* window)
+{
+    sf::Vector2i mousePos = sf::Mouse::getPosition(*window);
+    if(this->rectangle.getGlobalBounds().contains(mousePos.x, mousePos.y))
+        return true;
+    return false;
+}
+
+void ColorRect::updateColor(sf::Color newColor)
+{
+    this->color = newColor;
+    this->rectangle.setFillColor(this->color);
+}
