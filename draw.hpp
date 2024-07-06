@@ -50,8 +50,9 @@ public:
     void checkWindowSize();
 
     // Event functions
-    void pushCircle();
     void keyEvent(sf::Event event);
+    void changeRadius(int delta);
+    void pushCircle();
 
     // Update functions
     void updateRadius();

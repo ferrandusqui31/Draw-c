@@ -117,11 +117,6 @@ void Draw::checkWindowSize()
     }
 }
 
-void Draw::pushCircle()
-{
-    this->circles.push_back(this->preview);
-}
-
 void Draw::keyEvent(sf::Event event)
 {
     switch(event.key.code)
@@ -130,6 +125,20 @@ void Draw::keyEvent(sf::Event event)
             this->window->close();
             break;
     }
+}
+
+void Draw::changeRadius(int delta)
+{
+    this->radius += delta;
+    if(this->radius < 1)
+        this->radius = 1;
+    this->preview.setRadius(this->radius);
+    this->preview.setOrigin(sf::Vector2f(this->radius, this->radius));
+}
+
+void Draw::pushCircle()
+{
+    this->circles.push_back(this->preview);
 }
 
 void Draw::updateRadius()
@@ -145,7 +154,6 @@ void Draw::updatePreviewCircle()
     {
         this->preview.setPosition(mousePos.x, mousePos.y);
     }
-    this->preview.setOrigin(sf::Vector2f(this->radius, this->radius));
 }
 
 void Draw::renderCircles()
@@ -173,6 +181,9 @@ void Draw::events()
             case sf::Event::MouseButtonPressed:
                 if(this->event.mouseButton.button == sf::Mouse::Button::Left)
                     this->pushCircle();
+                break;
+            case sf::Event::MouseWheelMoved:
+                this->changeRadius(this->event.mouseWheel.delta);
                 break;
         }
     }
