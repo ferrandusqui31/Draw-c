@@ -175,27 +175,27 @@ void Draw::checkIfColorRectangleClicked()
 {
     if(this->colorRectangleRed->checkIfClicked(this->window))
         this->color = colorRectangleRed->color;
-    if(this->colorRectangleOrange->checkIfClicked(this->window))
+    else if(this->colorRectangleOrange->checkIfClicked(this->window))
         this->color = colorRectangleOrange->color;
-    if(this->colorRectangleYellow->checkIfClicked(this->window))
+    else if(this->colorRectangleYellow->checkIfClicked(this->window))
         this->color = colorRectangleYellow->color;
-    if(this->colorRectangleGreen->checkIfClicked(this->window))
+    else if(this->colorRectangleGreen->checkIfClicked(this->window))
         this->color = colorRectangleGreen->color;
-    if(this->colorRectangleCyan->checkIfClicked(this->window))
+    else if(this->colorRectangleCyan->checkIfClicked(this->window))
         this->color = colorRectangleCyan->color;
-    if(this->colorRectangleBlue->checkIfClicked(this->window))
+    else if(this->colorRectangleBlue->checkIfClicked(this->window))
         this->color = colorRectangleBlue->color;
-    if(this->colorRectanglePurple->checkIfClicked(this->window))
+    else if(this->colorRectanglePurple->checkIfClicked(this->window))
         this->color = colorRectanglePurple->color;
-    if(this->colorRectangleMagenta->checkIfClicked(this->window))
+    else if(this->colorRectangleMagenta->checkIfClicked(this->window))
         this->color = colorRectangleMagenta->color;
-    if(this->colorRectangleWhite->checkIfClicked(this->window))
+    else if(this->colorRectangleWhite->checkIfClicked(this->window))
         this->color = colorRectangleWhite->color;
-    if(this->colorRectangleLightGray->checkIfClicked(this->window))
+    else if(this->colorRectangleLightGray->checkIfClicked(this->window))
         this->color = colorRectangleLightGray->color;
-    if(this->colorRectangleDarkGray->checkIfClicked(this->window))
+    else if(this->colorRectangleDarkGray->checkIfClicked(this->window))
         this->color = colorRectangleDarkGray->color;
-    if(this->colorRectangleBlack->checkIfClicked(this->window))
+    else if(this->colorRectangleBlack->checkIfClicked(this->window))
         this->color = colorRectangleBlack->color;
     
     this->colorPreview->updateColor(this->color);
