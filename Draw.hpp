@@ -46,6 +46,10 @@ private:
     sf::Text textRadius;
     sf::RectangleShape canvasRect;
     sf::CircleShape preview;
+    sf::RectangleShape whiteRectangleUp;
+    sf::RectangleShape whiteRectangleDown;
+    sf::RectangleShape whiteRectangleRight;
+    sf::RectangleShape whiteRectangleLeft;
 
     // Private functions
     void initVariables();
@@ -55,8 +59,8 @@ private:
     void initTextRadius();
     void initCanvasRect();
     void initPreviewCircle();
-
     void initColorRectangles();
+    void initWhiteRectangles();
 
 public:
 

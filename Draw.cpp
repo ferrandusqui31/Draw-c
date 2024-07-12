@@ -7,7 +7,7 @@ void Draw::initVariables()
     this->fontAntonio.loadFromFile("Antonio.ttf");
     this->cursorCross.loadFromSystem(sf::Cursor::Cross);
 
-    this->radius = 20;
+    this->radius = 30;
 }
 
 // Funciones privadas
@@ -111,6 +111,43 @@ void Draw::initColorRectangles()
     this->colorPreview = new ColorRect(this->color, sf::Vector2f(initPos.x+650, initPos.y), sf::Vector2f(initSize.x, 150));
 }
 
+void Draw::initWhiteRectangles()
+{
+    float op1;
+    float op2;
+    this->whiteRectangleUp.setFillColor(sf::Color::White);
+    this->whiteRectangleDown.setFillColor(sf::Color::White);
+    this->whiteRectangleRight.setFillColor(sf::Color::White);
+    this->whiteRectangleLeft.setFillColor(sf::Color::White);
+
+    this->whiteRectangleUp.setPosition(sf::Vector2f(0, 0));
+    this->whiteRectangleUp.setSize(sf::Vector2f(videoMode.width, 85));
+
+    op1 = videoMode.width * .68;
+    op1 *= .45;
+    op1 += 85;
+    this->whiteRectangleDown.setPosition(sf::Vector2f(0, op1));
+    
+    op1 = videoMode.height - op1;
+    this->whiteRectangleDown.setSize(sf::Vector2f(videoMode.width, op1));
+
+    op1 = videoMode.width * .68;
+    op2 = videoMode.width / 2;
+    op2 -= op1 / 2;
+    op1 += op2;
+    this->whiteRectangleRight.setPosition(sf::Vector2f(op1, 0));
+
+    op2 = videoMode.width - op1;
+    this->whiteRectangleRight.setSize(sf::Vector2f(op2, videoMode.height));
+
+    this->whiteRectangleLeft.setPosition(sf::Vector2f(0, 0));
+
+    op1 = videoMode.width * .68;
+    op2 = videoMode.width / 2;
+    op2 -= op1 / 2;
+    this->whiteRectangleLeft.setSize(sf::Vector2f(op2, videoMode.height));
+}
+
 // Constructor / Destructor
 Draw::Draw()
 {
@@ -121,6 +158,7 @@ Draw::Draw()
     this->initCanvasRect();
     this->initPreviewCircle();
     this->initColorRectangles();
+    this->initWhiteRectangles();
 }
 
 Draw::~Draw()
@@ -197,7 +235,7 @@ void Draw::checkIfColorRectangleClicked()
         this->color = colorRectangleDarkGray->color;
     else if(this->colorRectangleBlack->checkIfClicked(this->window))
         this->color = colorRectangleBlack->color;
-    
+
     this->colorPreview->updateColor(this->color);
     this->preview.setFillColor(this->color);
 }
@@ -282,6 +320,10 @@ void Draw::render()
 
     this->renderCircles();
     this->window->draw(this->preview);
+    this->window->draw(this->whiteRectangleUp);
+    this->window->draw(this->whiteRectangleDown);
+    this->window->draw(this->whiteRectangleRight);
+    this->window->draw(this->whiteRectangleLeft);
     this->window->draw(this->textTitle);
     this->window->draw(this->textRadius);
     this->window->draw(this->canvasRect);
