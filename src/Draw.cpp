@@ -4,7 +4,7 @@ void Draw::initVariables()
 {
     this->videoMode = toGetWindowSize.getDesktopMode();
     this->window = nullptr;
-    this->fontAntonio.loadFromFile("Antonio.ttf");
+    this->fontAntonio.loadFromFile("../fonts/Antonio.ttf");
     this->cursorCross.loadFromSystem(sf::Cursor::Cross);
 
     this->radius = 30;
