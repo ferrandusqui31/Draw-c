@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/Draw.dir/main.cpp.o CMakeFiles/Draw.dir/Draw.cpp.o CMakeFiles/Draw.dir/Color.cpp.o -o Draw  -lsfml-system -lsfml-graphics -lsfml-window -lsfml-audio -lsfml-network 

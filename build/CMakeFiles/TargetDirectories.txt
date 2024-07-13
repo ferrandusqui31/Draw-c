@@ -1,3 +1,0 @@
-/home/ferran/Draw/build/CMakeFiles/Draw.dir
-/home/ferran/Draw/build/CMakeFiles/edit_cache.dir
-/home/ferran/Draw/build/CMakeFiles/rebuild_cache.dir
