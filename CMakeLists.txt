@@ -3,7 +3,7 @@ project(Draw)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(SFML_DIR "${CMAKE_CURRENT_SOURCE_DIR}/SFML/lib/cmake/SFML")
+#set(SFML_DIR "${CMAKE_CURRENT_SOURCE_DIR}/SFML/lib/cmake/SFML")
 
 add_executable(Draw
 src/main.cpp
