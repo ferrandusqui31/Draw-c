@@ -6,8 +6,8 @@ set(CMAKE_CXX_STANDARD 14)
 set(SFML_DIR "${CMAKE_CURRENT_SOURCE_DIR}/SFML/lib/cmake/SFML")
 
 add_executable(Draw
-main.cpp
-Draw.cpp
-Color.cpp)
+src/main.cpp
+src/Draw.cpp
+src/Color.cpp)
 
 target_link_libraries(Draw sfml-system sfml-graphics sfml-window sfml-audio sfml-network)
