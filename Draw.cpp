@@ -8,6 +8,7 @@ void Draw::initVariables()
     this->cursorCross.loadFromSystem(sf::Cursor::Cross);
 
     this->radius = 30;
+    this->rectMode = false;
 }
 
 // Funciones privadas
@@ -205,8 +206,11 @@ void Draw::changeRadius(int delta)
 void Draw::pushCircle()
 {
     sf::Vector2i mousePos = sf::Mouse::getPosition(*this->window);
-    if(this->canvasRect.getGlobalBounds().contains(mousePos.x, mousePos.y))
+    if(this->canvasRect.getGlobalBounds().contains(mousePos.x, mousePos.y)){
+
         this->circles.push_back(this->previewCircle);
+        this->objectsIndex.push_back(1);
+    }
 }
 
 void Draw::checkIfColorRectangleClicked()
@@ -240,6 +244,36 @@ void Draw::checkIfColorRectangleClicked()
     this->previewCircle.setFillColor(this->color);
 }
 
+void Draw::startPreviewRectangle()
+{
+    sf::Vector2i mousePos = sf::Mouse::getPosition(*this->window);
+
+    if(this->canvasRect.getGlobalBounds().contains(mousePos.x, mousePos.y))
+    {
+        this->rectMode = true;
+
+        this->previewRectangleOrigin.x = mousePos.x;
+        this->previewRectangleOrigin.y = mousePos.y;
+
+        this->previewRectangle.setPosition(this->previewRectangleOrigin);
+        this->previewRectangle.setFillColor(this->color);
+        this->previewRectangle.setSize(sf::Vector2f(0, 0));
+    }
+}
+
+void Draw::endPreviewRectangle()
+{
+    this->rectMode = false;
+
+    sf::Vector2i mousePos = sf::Mouse::getPosition(*this->window);
+
+    if(this->canvasRect.getGlobalBounds().contains(mousePos.x, mousePos.y))
+    {
+        this->rectangles.push_back(this->previewRectangle);
+        this->objectsIndex.push_back(0);
+    }
+}
+
 void Draw::updateRadius()
 {
     std::string str = "Radius: " + std::to_string(this->radius);
@@ -255,11 +289,35 @@ void Draw::updatePreviewCircle()
     }
 }
 
-void Draw::renderCircles()
+void Draw::updatePreviewRectangle()
 {
-    for(int i = 0; i < circles.size(); i++)
+    sf::Vector2i mousePos = sf::Mouse::getPosition(*this->window);
+
+    sf::Vector2f size;
+    size.x = mousePos.x;
+    size.y = mousePos.y;
+
+    size -= this->previewRectangleOrigin;
+
+    this->previewRectangle.setSize(size);
+}
+
+void Draw::renderObjects()
+{
+    int ic = 0;
+    int ir = 0;
+    for(int i = 0; i < objectsIndex.size(); i++)
     {
-        window->draw(circles[i]);
+        if(objectsIndex[i] == 0)
+        {
+            this->window->draw(this->circles[ic]);
+            ic++;
+        }
+        else if(objectsIndex[i] == 1)
+        {
+            this->window->draw(this->rectangles[ir]);
+            ir++;
+        }
     }
 }
 
@@ -295,9 +353,16 @@ void Draw::events()
                 this->keyEvent(this->event);
                 break;
             case sf::Event::MouseButtonPressed:
-                if(this->event.mouseButton.button == sf::Mouse::Button::Left)
+                if(this->event.mouseButton.button == sf::Mouse::Button::Left and this->rectMode == false)
                     this->pushCircle();
+                else if(this->event.mouseButton.button == sf::Mouse::Button::Right)
+                    this->startPreviewRectangle();
+                else
                     this->checkIfColorRectangleClicked();
+                break;
+            case sf::Event::MouseButtonReleased:
+                if(this->rectMode == true)
+                    this->endPreviewRectangle();
                 break;
             case sf::Event::MouseWheelMoved:
                 this->changeRadius(this->event.mouseWheel.delta);
@@ -311,14 +376,18 @@ void Draw::update()
     this->checkWindowSize();
     this->events();
     this->updateRadius();
-    this->updatePreviewCircle();
+    if(this->rectMode == false)
+        this->updatePreviewCircle();
+    else if(this->rectMode == true)
+        this->updatePreviewRectangle();
 }
 
 void Draw::render()
 {
     this->window->clear(sf::Color::White);
 
-    this->renderCircles();
+    this->renderObjects();
+
     this->window->draw(this->previewCircle);
     this->window->draw(this->whiteRectangleUp);
     this->window->draw(this->whiteRectangleDown);

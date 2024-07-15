@@ -38,9 +38,18 @@ private:
 
     // Functionalities (no se como llamarlo)
     sf::Color color = sf::Color(0, 0, 0);
+
     int radius;
     sf::CircleShape previewCircle;
     std::vector<sf::CircleShape> circles;
+
+    bool rectMode;
+    sf::Vector2f previewRectangleOrigin;
+
+    sf::RectangleShape previewRectangle;
+    std::vector<sf::RectangleShape> rectangles;
+
+    std::vector<int> objectsIndex;
 
     // Drawable things
     sf::Text textTitle;
@@ -79,13 +88,16 @@ public:
     void changeRadius(int delta);
     void pushCircle();
     void checkIfColorRectangleClicked();
+    void startPreviewRectangle();
+    void endPreviewRectangle();
 
     // Update functions
     void updateRadius();
     void updatePreviewCircle();
+    void updatePreviewRectangle();
 
     // Render functions
-    void renderCircles();
+    void renderObjects();
     void renderColorRectangles();
 
     void events();
