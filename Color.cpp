@@ -1,6 +1,6 @@
 #include "Color.hpp"
 
-void ColorRect::initRectangle()
+void fn::ColorRect::initRectangle()
 {
     this->rectangle.setFillColor(this->color);
     this->rectangle.setPosition(this->position);
@@ -9,7 +9,7 @@ void ColorRect::initRectangle()
     this->rectangle.setOutlineThickness(2);
 }
 
-ColorRect::ColorRect(sf::Color colorSet, sf::Vector2f positionSet, sf::Vector2f sizeSet)
+fn::ColorRect::ColorRect(sf::Color colorSet, sf::Vector2f positionSet, sf::Vector2f sizeSet)
 {
     this->color = colorSet;
     this->position = positionSet;
@@ -18,7 +18,7 @@ ColorRect::ColorRect(sf::Color colorSet, sf::Vector2f positionSet, sf::Vector2f 
     this->initRectangle();
 }
 
-bool ColorRect::checkIfClicked(sf::RenderWindow* window)
+bool fn::ColorRect::checkIfClicked(sf::RenderWindow* window)
 {
     sf::Vector2i mousePos = sf::Mouse::getPosition(*window);
     if(this->rectangle.getGlobalBounds().contains(mousePos.x, mousePos.y))
@@ -26,7 +26,7 @@ bool ColorRect::checkIfClicked(sf::RenderWindow* window)
     return false;
 }
 
-void ColorRect::updateColor(sf::Color newColor)
+void fn::ColorRect::updateColor(sf::Color newColor)
 {
     this->color = newColor;
     this->rectangle.setFillColor(this->color);

@@ -8,6 +8,7 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
 
+namespace fn{
 class ColorRect{
 private:
     void initRectangle();
@@ -26,3 +27,4 @@ public:
     bool checkIfClicked(sf::RenderWindow* window);
     void updateColor(sf::Color newColor);
 };
+}

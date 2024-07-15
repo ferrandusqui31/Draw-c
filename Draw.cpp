@@ -96,19 +96,19 @@ void Draw::initColorRectangles()
     initPos.y += this->canvasRect.getSize().y;
     initPos.y += 20;
 
-    this->colorRectangleRed = new ColorRect(sf::Color(255,0,0), initPos, initSize);
-    this->colorRectangleOrange = new ColorRect(sf::Color(255, 162, 0), sf::Vector2f(initPos.x+80, initPos.y), initSize);
-    this->colorRectangleYellow = new ColorRect(sf::Color(255, 255, 0), sf::Vector2f(initPos.x+160, initPos.y), initSize);
-    this->colorRectangleGreen = new ColorRect(sf::Color(0, 255, 0), sf::Vector2f(initPos.x+240, initPos.y), initSize);
-    this->colorRectangleCyan = new ColorRect(sf::Color(0, 255, 255), sf::Vector2f(initPos.x+320, initPos.y), initSize);
-    this->colorRectangleBlue = new ColorRect(sf::Color(0, 0, 255), sf::Vector2f(initPos.x+400, initPos.y), initSize);
-    this->colorRectanglePurple = new ColorRect(sf::Color(150, 0, 255), sf::Vector2f(initPos.x+480, initPos.y), initSize);
-    this->colorRectangleMagenta = new ColorRect(sf::Color(255, 0, 255), sf::Vector2f(initPos.x+560, initPos.y), initSize);
-    this->colorRectangleWhite = new ColorRect(sf::Color(255, 255, 255), sf::Vector2f(initPos.x, initPos.y+80), sf::Vector2f(150, initSize.y));
-    this->colorRectangleLightGray = new ColorRect(sf::Color(170, 170, 170), sf::Vector2f(initPos.x+160, initPos.y+80), sf::Vector2f(150, initSize.y));
-    this->colorRectangleDarkGray = new ColorRect(sf::Color(85, 85, 85), sf::Vector2f(initPos.x+320, initPos.y+80), sf::Vector2f(150, initSize.y));
-    this->colorRectangleBlack = new ColorRect(sf::Color(0, 0, 0), sf::Vector2f(initPos.x+480, initPos.y+80), sf::Vector2f(150, initSize.y));
-    this->colorPreview = new ColorRect(this->color, sf::Vector2f(initPos.x+650, initPos.y), sf::Vector2f(initSize.x, 150));
+    this->colorRectangleRed = new fn::ColorRect(sf::Color(255,0,0), initPos, initSize);
+    this->colorRectangleOrange = new fn::ColorRect(sf::Color(255, 162, 0), sf::Vector2f(initPos.x+80, initPos.y), initSize);
+    this->colorRectangleYellow = new fn::ColorRect(sf::Color(255, 255, 0), sf::Vector2f(initPos.x+160, initPos.y), initSize);
+    this->colorRectangleGreen = new fn::ColorRect(sf::Color(0, 255, 0), sf::Vector2f(initPos.x+240, initPos.y), initSize);
+    this->colorRectangleCyan = new fn::ColorRect(sf::Color(0, 255, 255), sf::Vector2f(initPos.x+320, initPos.y), initSize);
+    this->colorRectangleBlue = new fn::ColorRect(sf::Color(0, 0, 255), sf::Vector2f(initPos.x+400, initPos.y), initSize);
+    this->colorRectanglePurple = new fn::ColorRect(sf::Color(150, 0, 255), sf::Vector2f(initPos.x+480, initPos.y), initSize);
+    this->colorRectangleMagenta = new fn::ColorRect(sf::Color(255, 0, 255), sf::Vector2f(initPos.x+560, initPos.y), initSize);
+    this->colorRectangleWhite = new fn::ColorRect(sf::Color(255, 255, 255), sf::Vector2f(initPos.x, initPos.y+80), sf::Vector2f(150, initSize.y));
+    this->colorRectangleLightGray = new fn::ColorRect(sf::Color(170, 170, 170), sf::Vector2f(initPos.x+160, initPos.y+80), sf::Vector2f(150, initSize.y));
+    this->colorRectangleDarkGray = new fn::ColorRect(sf::Color(85, 85, 85), sf::Vector2f(initPos.x+320, initPos.y+80), sf::Vector2f(150, initSize.y));
+    this->colorRectangleBlack = new fn::ColorRect(sf::Color(0, 0, 0), sf::Vector2f(initPos.x+480, initPos.y+80), sf::Vector2f(150, initSize.y));
+    this->colorPreview = new fn::ColorRect(this->color, sf::Vector2f(initPos.x+650, initPos.y), sf::Vector2f(initSize.x, 150));
 }
 
 void Draw::initWhiteRectangles()

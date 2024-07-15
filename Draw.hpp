@@ -22,19 +22,19 @@ private:
     sf::Cursor cursorCross;
 
     // Color rectangles
-    ColorRect* colorRectangleRed;
-    ColorRect* colorRectangleOrange;
-    ColorRect* colorRectangleYellow;
-    ColorRect* colorRectangleGreen;
-    ColorRect* colorRectangleCyan;
-    ColorRect* colorRectangleBlue;
-    ColorRect* colorRectanglePurple;
-    ColorRect* colorRectangleMagenta;
-    ColorRect* colorRectangleWhite;
-    ColorRect* colorRectangleLightGray;
-    ColorRect* colorRectangleDarkGray;
-    ColorRect* colorRectangleBlack;
-    ColorRect* colorPreview;
+    fn::ColorRect* colorRectangleRed;
+    fn::ColorRect* colorRectangleOrange;
+    fn::ColorRect* colorRectangleYellow;
+    fn::ColorRect* colorRectangleGreen;
+    fn::ColorRect* colorRectangleCyan;
+    fn::ColorRect* colorRectangleBlue;
+    fn::ColorRect* colorRectanglePurple;
+    fn::ColorRect* colorRectangleMagenta;
+    fn::ColorRect* colorRectangleWhite;
+    fn::ColorRect* colorRectangleLightGray;
+    fn::ColorRect* colorRectangleDarkGray;
+    fn::ColorRect* colorRectangleBlack;
+    fn::ColorRect* colorPreview;
 
     // Functionalities (no se como llamarlo)
     sf::Color color = sf::Color(0, 0, 0);
