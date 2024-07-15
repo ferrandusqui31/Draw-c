@@ -79,9 +79,9 @@ void Draw::initCanvasRect()
 
 void Draw::initPreviewCircle()
 {
-    this->preview.setFillColor(sf::Color::Black);
-    this->preview.setRadius(this->radius);
-    this->preview.setOrigin(this->radius, this->radius);
+    this->previewCircle.setFillColor(sf::Color::Black);
+    this->previewCircle.setRadius(this->radius);
+    this->previewCircle.setOrigin(this->radius, this->radius);
 }
 
 void Draw::initColorRectangles()
@@ -198,15 +198,15 @@ void Draw::changeRadius(int delta)
     this->radius += delta;
     if(this->radius < 1)
         this->radius = 1;
-    this->preview.setRadius(this->radius);
-    this->preview.setOrigin(sf::Vector2f(this->radius, this->radius));
+    this->previewCircle.setRadius(this->radius);
+    this->previewCircle.setOrigin(sf::Vector2f(this->radius, this->radius));
 }
 
 void Draw::pushCircle()
 {
     sf::Vector2i mousePos = sf::Mouse::getPosition(*this->window);
     if(this->canvasRect.getGlobalBounds().contains(mousePos.x, mousePos.y))
-        this->circles.push_back(this->preview);
+        this->circles.push_back(this->previewCircle);
 }
 
 void Draw::checkIfColorRectangleClicked()
@@ -237,7 +237,7 @@ void Draw::checkIfColorRectangleClicked()
         this->color = colorRectangleBlack->color;
 
     this->colorPreview->updateColor(this->color);
-    this->preview.setFillColor(this->color);
+    this->previewCircle.setFillColor(this->color);
 }
 
 void Draw::updateRadius()
@@ -251,7 +251,7 @@ void Draw::updatePreviewCircle()
     sf::Vector2i mousePos = sf::Mouse::getPosition(*this->window);
     if(this->canvasRect.getGlobalBounds().contains(mousePos.x, mousePos.y))
     {
-        this->preview.setPosition(mousePos.x, mousePos.y);
+        this->previewCircle.setPosition(mousePos.x, mousePos.y);
     }
 }
 
@@ -319,7 +319,7 @@ void Draw::render()
     this->window->clear(sf::Color::White);
 
     this->renderCircles();
-    this->window->draw(this->preview);
+    this->window->draw(this->previewCircle);
     this->window->draw(this->whiteRectangleUp);
     this->window->draw(this->whiteRectangleDown);
     this->window->draw(this->whiteRectangleRight);

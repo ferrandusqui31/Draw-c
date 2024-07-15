@@ -39,13 +39,13 @@ private:
     // Functionalities (no se como llamarlo)
     sf::Color color = sf::Color(0, 0, 0);
     int radius;
+    sf::CircleShape previewCircle;
     std::vector<sf::CircleShape> circles;
 
     // Drawable things
     sf::Text textTitle;
     sf::Text textRadius;
     sf::RectangleShape canvasRect;
-    sf::CircleShape preview;
     sf::RectangleShape whiteRectangleUp;
     sf::RectangleShape whiteRectangleDown;
     sf::RectangleShape whiteRectangleRight;
