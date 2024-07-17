@@ -38,6 +38,7 @@ private:
 
     // Functionalities (no se como llamarlo)
     sf::Color color = sf::Color(0, 0, 0);
+    sf::Vector2i mousePos;
 
     int radius;
     sf::CircleShape previewCircle;
@@ -85,6 +86,7 @@ public:
 
     // Event functions
     void keyEvent(sf::Event event);
+    void mouseButtonPressedEvent(sf::Event event);
     void changeRadius(int delta);
     void pushCircle();
     void checkIfColorRectangleClicked();
