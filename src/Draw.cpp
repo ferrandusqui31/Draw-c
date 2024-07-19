@@ -192,7 +192,11 @@ void Draw::keyEvent(sf::Event event)
     {
         case sf::Keyboard::Escape:
             this->window->close();
-            break;
+        break;
+
+        case sf::Keyboard::Z:
+            this->undo();
+        break;
     }
 }
 
@@ -286,6 +290,24 @@ void Draw::endPreviewRectangle()
     {
         this->rectangles.push_back(this->previewRectangle);
         this->objectsIndex.push_back(1);
+    }
+}
+
+void Draw::undo()
+{
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) or sf::Keyboard::isKeyPressed(sf::Keyboard::RControl))
+    {
+        int index = objectsIndex[objectsIndex.size()-1];
+        if(index == 1)
+        {
+            rectangles.pop_back();
+            objectsIndex.pop_back();
+        }
+        else if(index == 2)
+        {
+            circles.pop_back();
+            objectsIndex.pop_back();
+        }
     }
 }
 

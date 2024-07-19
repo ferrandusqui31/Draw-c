@@ -92,6 +92,7 @@ public:
     void checkIfColorRectangleClicked();
     void startPreviewRectangle();
     void endPreviewRectangle();
+    void undo();
 
     // Update functions
     void updateRadius();
