@@ -52,6 +52,11 @@ private:
 
     std::vector<int> objectsIndex;
 
+    // Redo logic
+    std::vector<int> redoObjectsIndex;
+    std::vector<sf::CircleShape> redoCircles;
+    std::vector<sf::RectangleShape> redoRectangles;
+
     // Drawable things
     sf::Text textTitle;
     sf::Text textRadius;
@@ -93,6 +98,7 @@ public:
     void startPreviewRectangle();
     void endPreviewRectangle();
     void undo();
+    void redo();
 
     // Update functions
     void updateRadius();

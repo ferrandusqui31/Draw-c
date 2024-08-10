@@ -197,6 +197,10 @@ void Draw::keyEvent(sf::Event event)
         case sf::Keyboard::Z:
             this->undo();
         break;
+
+        case sf::Keyboard::Y:
+            this->redo();
+        break;
     }
 }
 
@@ -297,16 +301,47 @@ void Draw::undo()
 {
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) or sf::Keyboard::isKeyPressed(sf::Keyboard::RControl))
     {
-        int index = objectsIndex[objectsIndex.size()-1];
+        int index = this->objectsIndex[this->objectsIndex.size()-1];
         if(index == 1)
         {
-            rectangles.pop_back();
-            objectsIndex.pop_back();
+            this->redoRectangles.push_back(this->rectangles[this->rectangles.size() - 1]);
+            this->redoObjectsIndex.push_back(1);
+
+            this->rectangles.pop_back();
+            this->objectsIndex.pop_back();
         }
         else if(index == 2)
         {
-            circles.pop_back();
-            objectsIndex.pop_back();
+            this->redoCircles.push_back(this->circles[this->circles.size() - 1]);
+            this->redoObjectsIndex.push_back(2);
+
+            this->circles.pop_back();
+            this->objectsIndex.pop_back();
+        }
+    }
+}
+
+void Draw::redo()
+{
+    if((sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) or sf::Keyboard::isKeyPressed(sf::Keyboard::RControl)) and this->redoObjectsIndex.size() > 0)
+    {
+        int redoIndex = this->redoObjectsIndex.size() - 1;
+
+         if(this->redoObjectsIndex[redoIndex] == 1)
+        {
+            this->rectangles.push_back(this->redoRectangles[this->redoRectangles.size() - 1]);
+            this->objectsIndex.push_back(1);
+
+            this->redoRectangles.pop_back();
+            this->redoObjectsIndex.pop_back();
+        }
+        else if(this->redoObjectsIndex[redoIndex] == 2)
+        {
+            this->circles.push_back(this->redoCircles[this->redoCircles.size() - 1]);
+            this->objectsIndex.push_back(2);
+
+            this->redoCircles.pop_back();
+            this->redoObjectsIndex.pop_back();
         }
     }
 }
