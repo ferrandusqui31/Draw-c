@@ -201,6 +201,10 @@ void Draw::keyEvent(sf::Event event)
         case sf::Keyboard::Y:
             this->redo();
         break;
+
+        case sf::Keyboard::C:
+            this->clear();
+        break;
     }
 }
 
@@ -344,6 +348,17 @@ void Draw::redo()
             this->redoObjectsIndex.pop_back();
         }
     }
+}
+
+void Draw::clear()
+{
+    this->rectangles.clear();
+    this->circles.clear();
+    this->objectsIndex.clear();
+    
+    this->redoRectangles.clear();
+    this->redoCircles.clear();
+    this->redoObjectsIndex.clear();
 }
 
 // Update functions

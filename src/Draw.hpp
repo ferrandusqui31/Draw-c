@@ -99,6 +99,7 @@ public:
     void endPreviewRectangle();
     void undo();
     void redo();
+    void clear();
 
     // Update functions
     void updateRadius();
