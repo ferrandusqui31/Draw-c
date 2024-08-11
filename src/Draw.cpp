@@ -203,7 +203,7 @@ void Draw::keyEvent(sf::Event event)
         break;
 
         case sf::Keyboard::C:
-            this->clear();
+            this->clean();
         break;
     }
 }
@@ -350,7 +350,7 @@ void Draw::redo()
     }
 }
 
-void Draw::clear()
+void Draw::clean()
 {
     this->rectangles.clear();
     this->circles.clear();
