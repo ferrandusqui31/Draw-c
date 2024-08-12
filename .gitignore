@@ -1,3 +1,4 @@
 Draw
 *.o
-build/
+build/*
+!build/
