@@ -4,6 +4,15 @@ Just a simple drawing program to pass the time :)
 ### *Before READingME*
 I'm writing this so I can make it public. Maybe in the future I'll put everything in order, but at the moment this will be a bit of a mess (for as long as I'm that lazy).
 
+## Brief tutorial
+- Left click to create a circle
+- Hold and release mouse right button to create a rectangle
+- Mouse wheel to increase and decrease circle's radius
+- Ctrl + Z to undo
+- Ctrl + Y to redo
+- Press C to clear the canvas
+- Escape to exit the program
+
 ## Contributing 
 You're free to contribute, but I don't guarantee I'll add your features.
 
