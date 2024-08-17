@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Color.hpp"
+#include "HelpWindow.hpp"
 
 #include <iostream>
 #include <string>
@@ -100,6 +101,7 @@ public:
     void undo();
     void redo();
     void clean();
+    void openHelpWindow();
 
     // Update functions
     void updateRadius();

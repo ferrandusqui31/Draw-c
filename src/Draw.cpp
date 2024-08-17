@@ -205,6 +205,10 @@ void Draw::keyEvent(sf::Event event)
         case sf::Keyboard::C:
             this->clean();
         break;
+
+        case sf::Keyboard::H:
+            this->openHelpWindow();
+        break;
     }
 }
 
@@ -359,6 +363,16 @@ void Draw::clean()
     this->redoRectangles.clear();
     this->redoCircles.clear();
     this->redoObjectsIndex.clear();
+}
+
+void Draw::openHelpWindow()
+{
+    fn::HelpWindow helpWindow;
+
+    while(helpWindow.running())
+    {
+        helpWindow.update();
+    }
 }
 
 // Update functions

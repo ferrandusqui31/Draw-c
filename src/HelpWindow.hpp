@@ -27,6 +27,8 @@ public:
     const bool running() const;
 
     void events();
+    void update();
+    void render();
 
 };
 }
