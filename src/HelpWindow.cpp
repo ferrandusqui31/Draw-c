@@ -17,15 +17,30 @@ void fn::HelpWindow::initText()
     this->tutorialText.setPosition(sf::Vector2f(10, 10));
     this->tutorialText.setFont(this->fontAntonio);
     this->tutorialText.setFillColor(sf::Color::Black);
-    this->tutorialText.setCharacterSize(18);
-    
-    this->tutorialText.setString("Lorem Ipsum sit amet");
+    this->tutorialText.setCharacterSize(23);
+    this->tutorialText.setLineSpacing(1.5);
 
-    std::string str;
+    std::string instr;
+    std::string totalstr;
+
     std::ifstream inFile;
     inFile.open("../texts/tutorial.txt");
-    inFile >> str;
+    while(inFile >> instr)
+    {
+        if(instr != "\\n")
+        {
+            totalstr.append(instr);
+            totalstr.push_back(' ');
+        }
+        else if(instr == "\\n")
+        {
+            totalstr.push_back('\n');
+        }
+        
+    }
     inFile.close();
+
+    this->tutorialText.setString(totalstr);
 
 }
 
