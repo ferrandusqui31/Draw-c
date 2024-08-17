@@ -3,19 +3,19 @@
 void fn::HelpWindow::initVariables()
 {
     this->window = nullptr;
-    this->fontAntonio.loadFromFile("../fonts/Antonio.ttf");
+    this->fontUbuntu.loadFromFile("../fonts/Ubuntu-Medium.ttf");
 }
 
 void fn::HelpWindow::initWindow()
 {
-    this->window = new sf::RenderWindow(sf::VideoMode(700,700), "Draw Tutorial");
+    this->window = new sf::RenderWindow(sf::VideoMode(700,330), "Draw Tutorial");
     this->window->setFramerateLimit(5);
 }
 
 void fn::HelpWindow::initText()
 {
     this->tutorialText.setPosition(sf::Vector2f(10, 10));
-    this->tutorialText.setFont(this->fontAntonio);
+    this->tutorialText.setFont(this->fontUbuntu);
     this->tutorialText.setFillColor(sf::Color::Black);
     this->tutorialText.setCharacterSize(23);
     this->tutorialText.setLineSpacing(1.5);

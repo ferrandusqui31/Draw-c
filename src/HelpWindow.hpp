@@ -16,7 +16,7 @@ private:
     // Private variables
     sf::RenderWindow* window;
     sf::Event event;
-    sf::Font fontAntonio;
+    sf::Font fontUbuntu;
     sf::Text tutorialText;
 
     // Private functions
