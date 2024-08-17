@@ -1,6 +1,8 @@
 #pragma once
 
 #include <iostream>
+#include <string>
+#include <fstream>
 
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
@@ -14,9 +16,13 @@ private:
     // Private variables
     sf::RenderWindow* window;
     sf::Event event;
+    sf::Font fontAntonio;
+    sf::Text tutorialText;
 
     // Private functions
+    void initVariables();
     void initWindow();
+    void initText();
 
 public:
     // Constructor / Destructor

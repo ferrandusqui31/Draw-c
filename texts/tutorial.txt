@@ -1,0 +1,8 @@
+- Left click to create a circle
+- Hold and release mouse right button to create a rectangle
+- Mouse wheel to increase and decrease circle's radius
+- Ctrl + Z to undo
+- Ctrl + Y to redo
+- Press C to clear the canvas
+- Escape to exit the program
+- Press H to open the tutorial window (this one)
