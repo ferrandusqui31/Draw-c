@@ -367,11 +367,14 @@ void Draw::clean()
 
 void Draw::openHelpWindow()
 {
-    fn::HelpWindow helpWindow;
-
-    while(helpWindow.running())
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) or sf::Keyboard::isKeyPressed(sf::Keyboard::RControl))
     {
-        helpWindow.update();
+        fn::HelpWindow helpWindow;
+
+        while(helpWindow.running())
+        {
+            helpWindow.update();
+        }
     }
 }
 

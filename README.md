@@ -12,7 +12,7 @@ I'm writing this so I can make it public. Maybe in the future I'll put everythin
 - Ctrl + Y to redo
 - Press C to clear the canvas
 - Escape to exit the program
-- Press H to open the tutorial window
+- Press Ctrl + H to open the tutorial window
 
 ## Contributing 
 You're free to contribute, but I don't guarantee I'll add your features.

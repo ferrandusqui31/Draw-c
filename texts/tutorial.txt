@@ -5,4 +5,4 @@
 - Ctrl + Y to redo \n
 - Press C to clear the canvas \n
 - Escape to exit the program \n
-- Press H to open the tutorial window (this one) \n
+- Press Ctrl + H to open the tutorial window (this one) \n
